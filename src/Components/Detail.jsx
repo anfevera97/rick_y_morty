@@ -17,7 +17,7 @@ const Detail = () => {
 						className="rounded-full absolute top-64 right-32 h-2/4"
 					></img>
 
-					<div className="text-azul font-rick absolute top-72 left-80 text-6xl grid gap-10 py-24 px-44 rounded-3xl">
+					<div className="text-azul font-rick absolute top-80 left-72 text-6xl grid gap-10 drop-shadow-[3px_3px_#e8e838]">
 						<p>Origin: {character.origin?.name}</p>
 						<p>Species: {character.species}</p>
 						<p>Gender: {character.gender}</p>

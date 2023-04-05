@@ -6,7 +6,7 @@ const Cards = ({characters, onClose}) => {
     console.log(characters)
 
 	return (
-        <div className="flex flex-wrap absolute top-40 left-10">
+        <div className="flex flex-wrap absolute top-40 left-24">
 			{characters.map(({ id, name, image, species, gender, status }) => (
                 
                 <Card

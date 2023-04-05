@@ -7,10 +7,10 @@ import Login from "./Components/Login";
 
 function App() {
 	const [characters, setCharacters] = useState([]);
-  const [access, setAccess] = useState(false);
-  const navigate = useNavigate();
+	const [access, setAccess] = useState(false);
+	const navigate = useNavigate();
 
-	const onSearch =  (id) => {
+	const onSearch = (id) => {
 		const URL_BASE = "http://localhost:3001";
 
 		if (characters.find((char) => char.id === id)) {
@@ -27,7 +27,6 @@ function App() {
 				}
 			});
 	};
-  
 
 	const onClose = (id) => {
 		setCharacters(characters.filter((char) => char.id !== id));
@@ -49,23 +48,22 @@ function App() {
 		!access && navigate("/");
 	}, [access, navigate]);
 
-
 	return (
-    <body className="bg-[url(C:\Users\RYZEN\Desktop\rick_and_morty_v2\front\src\img\space-4749302_1280.jpg)] bg-fixed bg-cover brightness-70">
-		<div className="flex h-screen">
+		<div className="">
 			<NavBar onSearch={onSearch} />
 			<Routes>
-        <Route path="/" element={<Login onSubmit={login} />} />
+				<Route path="/" element={<Login onSubmit={login} />} />
 				<Route
 					path="/home"
 					element={<Cards characters={characters} onClose={onClose} />}
 				/>
-        <Route path="/detail/:detailId" element={<Detail />} />
+				<Route path="/detail/:detailId" element={<Detail />} />
 			</Routes>
 		</div>
-    </body>
 	);
 }
 
 export default App;
 
+//bg-[url(C:\Users\RYZEN\Desktop\rick_and_morty_v2\front\src\img\space-4749302_1280.jpg)] bg-cover min-h-screen brightness-70
+// bg-gradient-to-tr from-amarilloName to-verde min-h-screen
