@@ -6,7 +6,6 @@ import { getFavorites, removeFavorite } from "../redux/actions";
 import axios from "axios";
 
 const Card = ({
-	key,
 	id,
 	detailId,
 	name,
@@ -16,18 +15,18 @@ const Card = ({
 	onClose,
 	myFavorites,
 }) => {
+	const URL = "http://localhost:3001";
 	const [isFav, setIsFav] = useState(false);
 	const dispatch = useDispatch();
 
 	const addFavorites = (character) => {
-		const URL = "http://localhost:3001";
 		axios
 			.post(`${URL}/rickandmorty/favorites`, character)
 			.then((res) => console.log("Posted"));
 	};
 
 	const removeFavorite = async (id) => {
-		const URL = "http://localhost:3001";
+		// const URL = "http://localhost:3001";
 		await axios.delete(`${URL}/rickandmorty/favorites/${id}`);
 		dispatch(getFavorites());
 		alert("Eliminado de favoritos");
@@ -39,7 +38,7 @@ const Card = ({
 			removeFavorite(id);
 		} else {
 			setIsFav(true);
-			addFavorites({ key, id, detailId, name, species, gender, image });
+			addFavorites({ id, detailId, name, species, gender, image });
 		}
 	};
 
@@ -49,7 +48,7 @@ const Card = ({
 				setIsFav(true);
 			}
 		});
-	}, [myFavorites]);
+	}, [myFavorites, id]);
 
 	return (
 		<div className="bg-gray-900 w-max h-max mx-3 rounded-xl relative hover:shadow-2xl mt-3 p-1">
@@ -89,8 +88,8 @@ const Card = ({
 };
 const mapDispatchToProps = (dispatch) => {
 	return {
-		removeFavorite: (id) => {
-			dispatch(removeFavorite(id));
+		removeFavorite: (detailId) => {
+			dispatch(removeFavorite(detailId));
 		},
 	};
 };

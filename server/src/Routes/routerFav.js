@@ -14,9 +14,14 @@ routerFav.get("/", (req, res) => {
 });
 
 routerFav.delete("/:id", (req, res) => {
-	const { id } = req.params;
-	favs = favs.filter((char) => char.id != id);
-	res.status(200).json({ status: "Deleted" });
+	try {
+		const { id } = req.params;
+		favs = favs.filter((char) => char.id !== id);
+		res.status(200).json({ status: "Deleted" });
+		
+	} catch (error) {
+		res.status(404).json({error: error.message});
+	}
 });
 
 module.exports = routerFav;
