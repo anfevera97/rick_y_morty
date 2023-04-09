@@ -1,22 +1,30 @@
-import { Route, Routes, useNavigate, useLocation } from "react-router";
+import { Route, Routes, useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import NavBar from "./Components/NavBar";
 import Cards from "./Components/Cards";
 import Detail from "./Components/Detail";
 import Login from "./Components/Login";
+import ModalPE from "./Components/ModalPE";
+import Favorites from "./Components/Favorites";
+
+
 
 function App() {
 	const [characters, setCharacters] = useState([]);
 	const [access, setAccess] = useState(false);
+	const [visibleModal, setVisibleModal] = useState(true)
 	const navigate = useNavigate();
 
+	
+	
 	const onSearch = (id) => {
 		const URL_BASE = "http://localhost:3001";
 
 		if (characters.find((char) => char.id === id)) {
-			return alert("Ese personaje ya esta, Jerry!");
+			return setVisibleModal(false);
 		}
 
+		
 		fetch(`${URL_BASE}/onsearch/${id}`)
 			.then((response) => response.json())
 			.then((data) => {
@@ -28,6 +36,9 @@ function App() {
 			});
 	};
 
+
+	
+		
 	const onClose = (id) => {
 		setCharacters(characters.filter((char) => char.id !== id));
 	};
@@ -43,10 +54,11 @@ function App() {
 			alert("Credenciales incorrectas");
 		}
 	}
-
+	
 	useEffect(() => {
 		!access && navigate("/");
 	}, [access, navigate]);
+
 
 	return (
 		<div className="">
@@ -58,12 +70,11 @@ function App() {
 					element={<Cards characters={characters} onClose={onClose} />}
 				/>
 				<Route path="/detail/:detailId" element={<Detail />} />
+				<Route path="/favorites" element={<Favorites />} />
 			</Routes>
+			<ModalPE visible={visibleModal} setVisible={setVisibleModal}/>
 		</div>
 	);
 }
 
 export default App;
-
-//bg-[url(C:\Users\RYZEN\Desktop\rick_and_morty_v2\front\src\img\space-4749302_1280.jpg)] bg-cover min-h-screen brightness-70
-// bg-gradient-to-tr from-amarilloName to-verde min-h-screen

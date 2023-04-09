@@ -27,7 +27,7 @@ const SearchBar = (props) => {
 	}
 
 	return (
-		<div className="flex gap-3">
+		<div className="flex gap-2">
 			<input
 				type="text"
 				className="rounded-lg h-6 text-gray-900"

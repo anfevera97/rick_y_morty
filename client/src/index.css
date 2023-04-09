@@ -4,12 +4,12 @@
 
 @font-face {
 	font-family: "rick";
-	src: url("C:\Users\RYZEN\Desktop\rick_and_morty_v2\front\src\font\get_schwifty.ttf");
+	src: url("C:\Users\Gloria\Desktop\rick_y_morty\client\src\font\get_schwifty.ttf");
 }
 
 @layer components{
 	html{
-		background-image: url("C:\Users\RYZEN\Desktop\rick_and_morty_v2\front\src\img\space-4749302_1280.jpg");
+		background-image: url("C:\Users\Gloria\Desktop\rick_y_morty\client\src\img\space-4749302_1280.jpg");
 		background-size:cover;
 		filter: brightness(0.8);
 	}

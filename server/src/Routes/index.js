@@ -7,6 +7,6 @@ const router = Router();
 
 router.use("/onsearch", routerCharById);
 router.use("/detail", routerCharDetail);
-router.use("/favorites", routerFav); //? No sé si esta funcionando correctamente.
+router.use("/rickandmorty/favorites", routerFav);
 
 module.exports = router;

@@ -1,15 +1,19 @@
-import React from "react";
+import { useEffect } from "react";
 import Card from "./Card";
+import { useDispatch } from "react-redux";
+import { getFavorites } from "../redux/actions";
 
-const Cards = ({characters, onClose}) => {
+const Cards = ({ characters, onClose }) => {
+	const dispatch = useDispatch();
 
-    console.log(characters)
+	useEffect(() => {
+		dispatch(getFavorites());
+	}, [dispatch]);
 
 	return (
-        <div className="flex flex-wrap absolute top-40 left-24">
+		<div className="flex flex-wrap absolute top-40 left-24">
 			{characters.map(({ id, name, image, species, gender, status }) => (
-                
-                <Card
+				<Card
 					key={id}
 					detailId={id}
 					name={name}

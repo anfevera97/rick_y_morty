@@ -23,7 +23,7 @@ const Login = (props) => {
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<div className="grid place-content-center h-max w-max py-28 px-24 absolute top-[16%]  left-[40%] bg-amarilloLogin gap-10 rounded-xl">
+			<div className="grid place-content-center h-max w-max py-24 px-24 absolute top-[16%]  left-[35%] bg-amarilloLogin gap-10 rounded-xl">
 				<label
 					htmlFor="username"
 					className="text-azul text-5xl font-rick drop-shadow-[3px_3px_#5cad4a]"

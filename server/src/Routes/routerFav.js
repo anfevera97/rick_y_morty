@@ -1,21 +1,21 @@
 const { Router } = require("express");
-const routerFav = Router();
+let favs = require("../utils/favs");
 
-let favorites = [];
+const routerFav = Router();
 
 routerFav.post("/", (req, res) => {
 	const character = req.body;
-	favorites.push(character);
+	favs.push(character);
 	res.status(201).json({ status: "Posted" });
 });
 
 routerFav.get("/", (req, res) => {
-	res.status(200).json(favorites);
+	res.status(200).json(favs);
 });
 
 routerFav.delete("/:id", (req, res) => {
 	const { id } = req.params;
-	favorites = favorites.filter((char) => char.id !== id);
+	favs = favs.filter((char) => char.id != id);
 	res.status(200).json({ status: "Deleted" });
 });
 
